@@ -73,6 +73,30 @@ Ensures scalability and auditability.
 
 ---
 
+## 🗺 Conversation Flow Diagram
+
+```mermaid
+flowchart TD
+  A1["Q1: What is your name?"] -->|Option A: Go to Q2| A2
+  A1 -->|Option B: Go to Q3| A3
+
+  A2["Q2: What is your age? ✅ checkpoint"] -->|Option A: Go to Q3| A3
+
+  A3["Q3: What is your location?"] -->|Option A: Stay in Module A| A3
+  A3 -->|Option B: Go to Module B| B1
+
+  B1["Q4: Years of experience?"] -->|Any option| B2
+
+  B2["Q5: Final question ⏹ terminal"]
+
+  style A2 fill:#EEEDFE,stroke:#534AB7,color:#26215C
+  style B2 fill:#E1F5EE,stroke:#0F6E56,color:#04342C
+```
+
+> **Checkpoint (purple):** go-back cannot move past this point.  
+> **Terminal (green):** flow ends here, no next question.
+>
+> 
 ### Graph-Based Flow
 
 * Questions = nodes
