@@ -24,17 +24,18 @@ const getHistory = async (req, res) => {
   }
 };
 
-
 const resolveDeepLink = async (req, res) => {
   try {
-    if (!userId) return res.status(400).json({ message: 'userId query param required' });
+    // FIX: destructure first, then validate — previous code used userId before declaration
     const { userId } = req.query;
     const { questionId } = req.params;
+
+    if (!userId) return res.status(400).json({ message: 'userId query param required' });
 
     const user = await getUser(userId);
     const requestedQ = await Question.findById(questionId);
 
-    // question doesn't exist or belongs to different module — return current
+    // question doesn't exist, belongs to a different module, or isn't the current question — return current
     if (
       !requestedQ ||
       requestedQ.moduleId.toString() !== user.currentModuleId?.toString() ||
