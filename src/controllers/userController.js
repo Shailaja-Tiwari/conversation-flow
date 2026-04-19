@@ -24,8 +24,10 @@ const getHistory = async (req, res) => {
   }
 };
 
+
 const resolveDeepLink = async (req, res) => {
   try {
+    if (!userId) return res.status(400).json({ message: 'userId query param required' });
     const { userId } = req.query;
     const { questionId } = req.params;
 

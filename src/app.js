@@ -8,11 +8,11 @@ app.use(express.json());
 connectDB();
 
 // TEMP — move above other routes
-const User = require('./models/User');
+/*const User = require('./models/User');
 app.get('/users', async (req, res) => {
   const users = await User.find();
   res.json(users);
-});
+}); */
 
 app.use('/modules', require('./routes/modules'));
 app.use('/users', require('./routes/users'));

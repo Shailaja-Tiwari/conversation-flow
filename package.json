@@ -12,7 +12,9 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "setupFilesAfterEnv": ["<rootDir>/src/tests/setup.js"]
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/tests/setup.js"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -22,6 +24,7 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "joi": "^18.1.2",
+    "mongodb": "^7.1.1",
     "mongoose": "^9.4.1"
   },
   "devDependencies": {

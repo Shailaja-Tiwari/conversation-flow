@@ -26,9 +26,7 @@ const goBack = async (userId) => {
   const question = await Question.findById(previous.questionId);
   if (!question) throw { status: 404, message: 'Previous question not found' };
 
-  // remove last history entry
-  await History.findByIdAndDelete(previous._id);
-
+  // history is never deleted — state just moves back
   // update state to previous question
   await updateState(userId, user.currentModuleId, question._id);
 
